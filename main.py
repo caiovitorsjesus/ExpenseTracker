@@ -1,0 +1,31 @@
+import finances
+
+my_expense = finances.finances()
+
+while True:
+    print("\nExpense Tracker")
+    print("1. Add expense")
+    print("2. List expenses")
+    print("3. Update expense")
+    print("4. Delete expense")
+    print("5. Exit")
+
+    try: 
+        choice = int(input("Choose an option: "))
+        match choice:
+            case 1:
+                my_expense.addExpense()
+            case 2:
+                my_expense.viewExpenses()
+            case 3:
+                my_expense.updateExpense()
+            case 4:
+                my_expense.deleteExpense()
+            case 5:
+                break
+            case _:
+                print("Invalid option")
+    except ValueError:
+        print("Invalid option! Choose between the options.")        
+
+		
