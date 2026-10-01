@@ -8,7 +8,8 @@ while True:
     print("2. List expenses")
     print("3. Update expense")
     print("4. Delete expense")
-    print("5. Exit")
+    print("5. Summary of all expenses")
+    print("6. Exit")
 
     try: 
         choice = int(input("Choose an option: "))
@@ -22,9 +23,11 @@ while True:
             case 4:
                 my_expense.deleteExpense()
             case 5:
+                my_expense.summaryExpenses()
+            case 6:
                 break
             case _:
-                print("Invalid option")
+                print("Invalid option!")
     except ValueError:
         print("Invalid option! Choose between the options.")        
 

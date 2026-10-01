@@ -84,3 +84,12 @@ class finances:
                     f"{expense_id:<3} {expense['date']}  "
                     f"{expense['description']}  {amount_format:>10}"
                 )
+    
+    def summaryExpenses(self):
+        if not self.expenses:
+            print("You haven't recorded expenses")
+        else:    
+            totalExpenses = 0
+            for expense in self.expenses.values():
+                totalExpenses += expense['amount']
+            print(f"Total expenses: ${totalExpenses}")
