@@ -9,7 +9,8 @@ while True:
     print("3. Update expense")
     print("4. Delete expense")
     print("5. Summary of all expenses")
-    print("6. Exit")
+    print("6. Summary for a month")
+    print("7. Exit")
 
     try: 
         choice = int(input("Choose an option: "))
@@ -25,6 +26,8 @@ while True:
             case 5:
                 my_expense.summaryExpenses()
             case 6:
+                my_expense.specificSummary()
+            case 7:
                 break
             case _:
                 print("Invalid option!")
