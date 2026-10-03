@@ -12,6 +12,11 @@ class finances:
             print("Description cannot be empty.")
             return
 
+        category = input("Enter the category: ").strip()
+        if not category:
+            print("Category cannot be empty.")
+            return
+
         try:
             amount = float(input("Enter the amount of the expense: "))
             if amount <= 0:
@@ -26,6 +31,7 @@ class finances:
             "date": datetime.date.today().isoformat(),
             "description": description,
             "amount": amount,
+            "category": category.title(),
         }
         self.next_id += 1
         print(f"Expense added successfully (ID: {expense_id})")
@@ -46,6 +52,11 @@ class finances:
             print("Description cannot be empty.")
             return
 
+        category = input("Enter the new category: ").strip()
+        if not category:
+            print("Category cannot be empty.")
+            return
+
         try:
             amount = float(input("Enter the new amount: "))
             if amount <= 0:
@@ -57,6 +68,7 @@ class finances:
 
         self.expenses[expense_id]["description"] = description
         self.expenses[expense_id]["amount"] = amount
+        self.expenses[expense_id]["category"] = category.title()
         print("Expense updated successfully.")
 
     def deleteExpense(self):
@@ -76,23 +88,25 @@ class finances:
     def viewExpenses(self):
         if not self.expenses:
             print("You haven't recorded expenses")
-            return  
-        print("ID  Date        Description  Amount")
+            return
+
+        print("ID  Date        Description           Category        Amount")
         for expense_id, expense in self.expenses.items():
             amount_format = f"${expense['amount']:.2f}"
             print(
                 f"{expense_id:<3} {expense['date']}  "
-                f"{expense['description']}  {amount_format:>10}"
-                )
-    
+                f"{expense['description']:<20} {expense['category']:<12} {amount_format:>10}"
+            )
+
     def summaryExpenses(self):
         if not self.expenses:
             print("You haven't recorded expenses")
-            return   
+            return
+
         totalExpenses = 0
         for expense in self.expenses.values():
             totalExpenses += expense['amount']
-        print(f"Total expenses: ${totalExpenses}")
+        print(f"Total expenses: ${totalExpenses:.2f}")
 
     def specificSummary(self):
         if not self.expenses:
@@ -119,4 +133,25 @@ class finances:
             f"Total expenses for month {month} in {current_year}: "
             f"${total_specific_expense:.2f}"
         )
+
+    def filterByCategory(self):
+        if not self.expenses:
+            print("You haven't recorded expenses")
+            return
+
+        category = input("Enter the category to filter: ").strip().title()
+        found = False
+
+        print("ID  Date        Description           Category        Amount")
+        for expense_id, expense in self.expenses.items():
+            if expense["category"].lower() == category.lower():
+                found = True
+                amount_format = f"${expense['amount']:.2f}"
+                print(
+                    f"{expense_id:<3} {expense['date']}  "
+                    f"{expense['description']:<20} {expense['category']:<12} {amount_format:>10}"
+                )
+
+        if not found:
+            print(f"No expenses found for category: {category}")
                  

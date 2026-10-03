@@ -10,9 +10,10 @@ while True:
     print("4. Delete expense")
     print("5. Summary of all expenses")
     print("6. Summary for a month")
-    print("7. Exit")
+    print("7. Filter expenses by category")
+    print("8. Exit")
 
-    try: 
+    try:
         choice = int(input("Choose an option: "))
         match choice:
             case 1:
@@ -28,10 +29,12 @@ while True:
             case 6:
                 my_expense.specificSummary()
             case 7:
+                my_expense.filterByCategory()
+            case 8:
                 break
             case _:
                 print("Invalid option!")
     except ValueError:
-        print("Invalid option! Choose between the options.")        
+        print("Invalid option! Choose between the options.")
 
 		
