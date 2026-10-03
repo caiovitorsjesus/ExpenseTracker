@@ -1,23 +1,26 @@
 # Expense Tracker
 
-A simple command-line application for recording and managing expenses. Each expense is assigned an ID and an automatic date, along with the description and amount entered by the user.
+This project is a simple command-line expense tracker inspired by the challenge available at https://roadmap.sh/projects/expense-tracker.
 
-## Features
+It is designed to help users record and manage daily expenses in a simple way. Each expense is stored with an ID, a date generated automatically by the program, a description, and an amount.
 
-- Add an expense
-- List recorded expenses
+## What this project does
+
+- Add a new expense
+- View all recorded expenses
 - Update an expense by ID
 - Delete an expense by ID
-- Validate descriptions and amounts
+- Show the total expense amount
+- Show the total for a specific month in the current year
 
 ## Requirements
 
 - Python 3.10 or later
-- No external dependencies
+- No external libraries required
 
-## Running the application
+## How to run
 
-Open a terminal in the project directory and run:
+Open a terminal in the project folder and run:
 
 ```bash
 python main.py
@@ -29,8 +32,12 @@ On Windows, you can also run:
 py main.py
 ```
 
-Choose an option from the menu and follow the prompts in the terminal. To exit, choose `5. Exit`.
+The app will display a menu with available actions. Choose an option and follow the prompts in the terminal.
 
 ## Storage
 
-Expenses are stored in memory only while the application is running. All records are lost when the application exits.
+Expenses are currently kept in memory while the application is running. If the program is closed, the data is lost. This project is a beginner implementation and does not yet persist data to a file.
+
+## Project reference
+
+Project challenge: https://roadmap.sh/projects/expense-tracker
